@@ -80,3 +80,64 @@ export function next(currentDate) {
   date.setDate(date.getDate() + 1);
   return asDateString(date);
 }
+
+/**
+ * Format a time string in standard am/pm time instead of 24 hour time.
+ * @param time
+ *  HH:MM time string
+ * @returns {*}
+ *  the specified time string formatted as HH:MM am/pm.
+ */
+export function formatAsStandardTime(time) {
+  const hour = time.split(":")[0];
+  const mins = time.split(":")[1];
+
+  const AmOrPm = hour >=12 ? "pm" : "am";
+
+  if (Number(hour) > 12) {
+    const standardHour = hour % 12;
+    return (
+      `${standardHour}:${mins}${AmOrPm}`
+    )
+  }
+  return (
+    `${hour}:${mins}${AmOrPm}`
+  )
+}
+
+/**
+ * Reformats date given as YYYY-MM-DD to dayOfWeek MM-DD-YYYY.
+ * @param date
+ *  a date string in YYYY-MM-DD format.
+ * @returns {*}
+ *  the date formatted as dayOfWeek MM-DD-YYYY.
+ */
+export function formatDateWithDay(date) {
+  const year = date.split("-")[0];
+  const month = date.split("-")[1];
+  const day = date.split("-")[2];
+  const newDate = new Date(`${date}T00:00:00`);
+  const dayOfWeek = newDate.getDay();
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+  return (
+    `${days[dayOfWeek]} ${month}/${day}/${year}`
+  )
+}
+
+/**
+ * Reformats date given as YYYY-MM-DD to MM-DD-YYYY.
+ * @param date
+ *  a date string in YYYY-MM-DD format.
+ * @returns {*}
+ *  the date formatted as MM-DD-YYYY.
+ */
+export function reformatDate(date) {
+  const year = date.split("-")[0];
+  const month = date.split("-")[1];
+  const day = date.split("-")[2];
+
+  return (
+    `${month}/${day}/${year}`
+  )
+}

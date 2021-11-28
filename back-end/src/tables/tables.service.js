@@ -1,51 +1,65 @@
 const knex = require("../db/connection");
 
-// list all tables - sorted by table_name
-function list() {
+async function list() {
     return knex("tables")
         .select("*")
         .orderBy("table_name");
-}
+};
 
-// post a new table
 function create(table) {
     return knex("tables")
-        .insert(table)
-        .returning("*")
-        .then((createdRecords) => createdRecords[0]);
-}
+      .insert(table)
+      .returning("*")
+      .then((createRecords) => createRecords[0]);
+};
 
-// read a table by table_id - exists for validation purposes only
 function read(table_id) {
     return knex("tables")
         .select("*")
-        .where({ table_id: table_id })
-        .then((readTables) => readTables[0]);
-}
+        .where({table_id: table_id})
+        .first();
+};
 
-// seat a reservation at a table
-function seat(updatedTable) {
-    return knex("tables")
-        .select("*")
-        .where({ table_id: updatedTable.table_id })
-        .update(updatedTable, "*")
-        .then((updatedTables) => updatedTables[0]);
-}
+function update(updatedTable) {
+    return knex.transaction((trx) => {
+        return knex("reservations")
+          .transacting(trx)
+          .where({ reservation_id: updatedTable.reservation_id })
+          .update({ status: "seated" })
+          .then(() => {
+            return knex("tables")
+              .where({ table_id: updatedTable.table_id })
+              .update({ reservation_id: updatedTable.reservation_id })
+              .returning("*");
+          })
+          .then(trx.commit)
+          .catch(trx.rollback);
+      });
+};
 
-// finish a table
-function finish(updatedTable) {
-    return knex("tables")
-        .select("*")
-        .where({ table_id: updatedTable.table_id })
-        .update(updatedTable, "*")
-        .then((updatedTables) => updatedTables[0]);
-}
 
+function finish(table_id, reservation_id) {
+    return knex.transaction((trx) => {
+        return knex("reservations")
+          .transacting(trx)
+          .where({ reservation_id: reservation_id })
+          .update({ status: "finished" })
+          .returning("*")
+          .then(() => {
+            return knex("tables")
+              .where({ table_id: table_id })
+              .update({ reservation_id: null })
+              .returning("*");
+          })
+          .then(trx.commit)
+          .catch(trx.rollback);
+      });
+}
 
 module.exports = {
     list,
     create,
     read,
-    seat,
+    update,
     finish,
-}
+};

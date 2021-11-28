@@ -7,6 +7,7 @@ const { containsText } = require("./utils");
 const { createReservation, createTable } = require("./api");
 
 const baseURL = process.env.BASE_URL || "http://localhost:3000";
+console.log(baseURL);
 
 const onPageConsole = (msg) =>
   Promise.all(msg.args().map((event) => event.jsonValue())).then((eventJson) =>
