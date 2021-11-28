@@ -1,6 +1,6 @@
 Final Capstone: Restaurant Reservation System:Periodic Table
 
-Link to the deployed app: 
+Link to the deployed app: https://final-capstone-resturant.herokuapp.com/dashboard
 
 This is a fullstack application built using the following:
 
@@ -31,31 +31,38 @@ App Functionality
 This App will let an user book a reservation using their first name, last name, mobile number, number of people, date and time for the reservation if available. An user can also create a table for new reservations. When a reservation table is not occupied, it can be deleted. Reservations can also be searched using client's mobile number. Reservation can also be edited and canceled using this application. When the reservation is cancelled it will no longer show on the dashboard.
 
 DashBoard :
-![Alt text](front-end/.screenshots/us-01-submit-after.png?raw=true)
+(front-end/.screenshots/us-01-submit-after.png?raw=true)
 
 New Reservation:
 
-![Alt text](front-end/.screenshots/us-02-reservation-almost-closing-before.png?raw=true)
+(front-end/.screenshots/us-02-reservation-almost-closing-before.png?raw=true)
 
 Edit Reservation:
 
-![Alt text](front-end/.screenshots/us-08-edit-reservation-cancel-before.png?raw=true)
+(front-end/.screenshots/us-08-edit-reservation-cancel-before.png?raw=true)
 
 New Table:
-![Alt text](front-end/.screenshots/us-04-create-table-cancel-before.png?raw=true)
+(front-end/.screenshots/us-04-create-table-cancel-before.png?raw=true)
 
 Seat Reservation:
 
-![Alt text](front-end/.screenshots/us-04-seat-reservation-start.png?raw=true)
+(front-end/.screenshots/us-04-seat-reservation-start.png?raw=true)
 
 
 Installation
 -----------------------------------------------------------------------------------------
 Fork and clone this repository.
+
 Run cp ./back-end/.env.sample ./back-end/.env.
+
 Update the ./back-end/.env file with the connection URL's to your ElephantSQL database instance.
+
 Run cp ./front-end/.env.sample ./front-end/.env.
+
 You should not need to make changes to the ./front-end/.env file unless you want to connect to a backend at a location other than http://localhost:5000.
+
 Run npm install to install project dependencies.
+
 Run npm run start:dev to start your server in development mode.
+
 If you have trouble getting the server to run, reach out for assistance.
