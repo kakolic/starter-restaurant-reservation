@@ -31,22 +31,28 @@ App Functionality
 This App will let an user book a reservation using their first name, last name, mobile number, number of people, date and time for the reservation if available. An user can also create a table for new reservations. When a reservation table is not occupied, it can be deleted. Reservations can also be searched using client's mobile number. Reservation can also be edited and canceled using this application. When the reservation is cancelled it will no longer show on the dashboard.
 
 DashBoard :
-(front-end/.screenshots/us-01-submit-after.png?raw=true)
+![Dashboard](https://user-images.githubusercontent.com/71792509/143775634-1f4ef196-417a-48af-9a81-916734b07fd3.png)
+
 
 New Reservation:
 
-(front-end/.screenshots/us-02-reservation-almost-closing-before.png?raw=true)
+![New Reservation](https://user-images.githubusercontent.com/71792509/143775659-e39008da-32fb-4733-ad49-2f1c4d5e0fa6.png)
 
 Edit Reservation:
 
-(front-end/.screenshots/us-08-edit-reservation-cancel-before.png?raw=true)
+![Edit Reservation](https://user-images.githubusercontent.com/71792509/143775861-debae6c9-29b1-410e-9668-0849ada2f473.png)
 
 New Table:
-(front-end/.screenshots/us-04-create-table-cancel-before.png?raw=true)
+
+![New Table](https://user-images.githubusercontent.com/71792509/143775674-f9ea1a0a-ebf9-4719-b8ee-7a1b62b08896.png)
+
+Search Reservation:
+![Search](https://user-images.githubusercontent.com/71792509/143775692-30b9e9db-2891-421e-a070-8da6a8fab39e.png)
+
 
 Seat Reservation:
 
-(front-end/.screenshots/us-04-seat-reservation-start.png?raw=true)
+![Seat Reservation](https://user-images.githubusercontent.com/71792509/143775789-0faf0d0b-d1fb-40e8-b3da-1e98752608bc.png)
 
 
 Installation
