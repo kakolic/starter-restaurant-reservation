@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { formatAsTime, formatAsStandardTime, reformatDate } from "../utils/date-time";
 
 function Reservations({onCancel, reservations = [] }) {
-  function handleCancel({
+  function cancelHandler({
       target: { dataset: { reservationIdCancel } } = {},
   }) {
       if (
@@ -29,7 +29,7 @@ function Reservations({onCancel, reservations = [] }) {
               <div>
                   <Link className="btn btn-dark m-2" to={`/reservations/${reservation.reservation_id}/seat`}>seat</Link>
                   <Link className="btn btn-secondary m-2" to={`/reservations/${reservation.reservation_id}/edit`}>edit</Link>
-                  <button type="button" className="btn cancel btn-danger m-2" data-reservation-id-cancel={reservation.reservation_id} onClick={handleCancel}>cancel</button>
+                  <button type="button" className="btn cancel btn-danger m-2" data-reservation-id-cancel={reservation.reservation_id} onClick={cancelHandler}>cancel</button>
               </div>) : ( "" )}
           </div>
         </div>
@@ -39,7 +39,7 @@ function Reservations({onCancel, reservations = [] }) {
   return reservations.length ? (
     <div>{rows}</div>
   ) : (
-    <div>No reservations was found</div>
+    <div>No reservations found</div>
   );
 }
 
