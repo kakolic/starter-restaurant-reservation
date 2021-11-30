@@ -1,6 +1,6 @@
 Final Capstone: Restaurant Reservation System:Periodic Table
 
-Link to the deployed app: https://final-capstone-resturant.herokuapp.com/dashboard
+Link to the deployed app: https://front-end-kakolic.vercel.app/dashboard
 
 This is a fullstack application built using the following:
 
